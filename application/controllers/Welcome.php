@@ -12,8 +12,9 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data = array();
-		$data['scripts'] = array('assets/js/trangchu.js');
 		$this->template->set('title', 'day la trang chu');
+		$this->template->add_js('assets/js/trangchu.js');
+
 		$this->template->load('layout', 'contents' , 'font_end/index.php', $data);
 	}
 }
