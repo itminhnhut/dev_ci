@@ -15,7 +15,6 @@ class Welcome extends CI_Controller {
 		$this->template->set('title', 'day la trang chu');
 		$this->template->add_css('assets/js/trangchu.js');
 		$this->template->add_js('assets/js/trangchu.js');
-
 		$this->template->load('layout', 'contents' , 'font_end/index.php', $data);
 	}
 }
