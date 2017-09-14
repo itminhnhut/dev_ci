@@ -13,7 +13,7 @@ class Welcome extends CI_Controller {
 	{
 		$data = array();
 		$this->template->set('title', 'day la trang chu');
-		$this->template->add_css('assets/js/trangchu.js');
+		$this->template->add_css('assets/js/trangchu.css');
 		$this->template->add_js('assets/js/trangchu.js');
 		$this->template->load('layout', 'contents' , 'font_end/index.php', $data);
 	}
