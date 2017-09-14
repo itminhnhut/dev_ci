@@ -2,35 +2,35 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
-		public function __construct()
-    {
-          parent::__construct();
-          $this->load->library('session');
-          $this->load->helper('form');
-          $this->load->helper('url');
-          $this->load->helper('html');
-          $this->load->database();
-          $this->load->library('form_validation');
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->library('session');
+    $this->load->helper('form');
+    $this->load->helper('url');
+    $this->load->helper('html');
+    $this->load->database();
+    $this->load->library('form_validation');
           //load the login model
-          $this->load->model('login_model');
-    }
-		 public function index()
-     {
+    $this->load->model('login_model');
+  }
+  public function index()
+  {
 
           //get the posted values
-          $username = $this->input->post("txt_username");
-          $password = $this->input->post("txt_password");
+    $username = $this->input->post("txt_username");
+    $password = $this->input->post("txt_password");
 
-          if ($this->input->post('btn_login') == "Login")
-          {
+    if ($this->input->post('btn_login') == "Login")
+    {
 				    //set validations
-          	$this->form_validation->set_rules("txt_username", "Username", "trim|required");
-          	$this->form_validation->set_rules("txt_password", "Password", "trim|required");
+     $this->form_validation->set_rules("txt_username", "Username", "trim|required");
+     $this->form_validation->set_rules("txt_password", "Password", "trim|required");
 
-          	if ($this->form_validation->run() == TRUE)
-          	{
-          		if($this->input->post('token') == $this->session->userdata('token') ){
-          			$usr_result = $this->login_model->get_user($username, $password);
+     if ($this->form_validation->run() == TRUE)
+     {
+      if($this->input->post('token') == $this->session->userdata('token') ){
+       $usr_result = $this->login_model->get_user($username, $password);
 	              if ($usr_result > 0) //active user record is present
 	              {
 	                //set the session variables
@@ -46,11 +46,11 @@ class Login extends CI_Controller {
 	              	$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
 	              	redirect('login/index');
 	              }
-          		}
+              }
+            }
           }
-        }
           $data['token'] = $this->auth->token();
           $this->load->view('login',$data);
-     }
-}
-?>
+        }
+      }
+      ?>
