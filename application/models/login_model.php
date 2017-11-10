@@ -2,17 +2,20 @@
 
 class login_model extends CI_Model
 {
-     function __construct()
-     {
+ function __construct()
+ {
           // Call the Model constructor
-          parent::__construct();
-     }
+  parent::__construct();
+  $this->load->library("session");
+  $this->load->helper('url');
+}
 
      //get the username & password from tbl_usrs
-     function get_user($usr, $pwd)
-     {
-          $sql = "select * from user where username = '" . $usr . "' and password = '" . md5($pwd) . "' and status = '1'";
-          $query = $this->db->query($sql);
-          return $query->num_rows();
-     }
+function get_user($usr, $pwd)
+{
+  $sql = "select * from user where username = '" . $usr . "' and password = '" . md5($pwd) . "'";
+  $query = $this->db->query($sql);
+  return $query->num_rows();
+}
+
 }?>

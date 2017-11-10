@@ -37,20 +37,24 @@ class Login extends CI_Controller {
 	              	$sessiondata = array(
 	              		'username' => $username,
 	              		'loginuser' => TRUE
-	              		);
-	              	$this->session->set_userdata($sessiondata);
-	              	redirect("index");
-	              }
-	              else
-	              {
-	              	$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
-	              	redirect('login/index');
-	              }
+                 );
+                 $this->session->set_userdata($sessiondata);
+                 redirect("admin/index");
+               }
+               else
+               {
+                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
+                redirect('login/index');
               }
             }
           }
-          $data['token'] = $this->auth->token();
-          $this->load->view('login',$data);
         }
+        $data['token'] = $this->auth->token();
+        $this->load->view('login',$data);
       }
-      ?>
+      function logout(){
+       $this->session->sess_destroy();
+       redirect('login/index');
+     }
+   }
+   ?>

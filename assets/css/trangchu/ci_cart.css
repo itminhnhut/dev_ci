@@ -1,0 +1,21 @@
+body {
+    font-family: Raleway;
+    line-height: 20px;
+    font-weight: 400;
+    font-style: normal;
+    color: #848484;
+    font-size: 13px;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.24s ease-in-out;
+    -moz-transition: opacity 0.24s ease-in-out;
+    transition: opacity 0.24s ease-in-out
+}
+.wf-loading body,
+{
+    opacity: 0
+}
+.ie.wf-loading body,
+{
+    visibility: hidden
+}
